@@ -13,7 +13,9 @@ namespace ElevenNote.Data
         public int NoteId { get; set; }
 
         [Required] // User cannot enter a null value
-        public Guid OwnerId { get; set; }
+        public Guid OwnerId { get; set; } 
+        // Guid: Type that allows us to create unique IDs for our users or items for our users;
+        // Globally Unique Identified; 32 digits; very hard to replicate
 
         [Required]
         public string Title { get; set; }
