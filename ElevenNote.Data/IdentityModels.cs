@@ -41,18 +41,30 @@ namespace ElevenNote.Data
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
+
             modelBuilder
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
-                .Add(new IdentityUserLoginConfiguration());
+                .Add(new IdentityUserRoleConfiguration());
+
         }
 
-        public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+    }
+
+    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+    {
+        public IdentityUserLoginConfiguration()
         {
-            public IdentityUserLoginConfiguration()
-            {
-                HasKey(IdentityUserLogin => IdentityUserLogin.UserId);
-            }
+            HasKey(iul => iul.UserId);
         }
     }
+
+    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+    {
+        public IdentityUserRoleConfiguration()
+        {
+            HasKey(iur => iur.UserId);
+        }
+    }
+
 }
